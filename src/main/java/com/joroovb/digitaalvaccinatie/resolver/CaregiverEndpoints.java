@@ -6,6 +6,7 @@ import com.joroovb.digitaalvaccinatie.model.Animal;
 import com.joroovb.digitaalvaccinatie.model.Caregiver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/cg")
@@ -46,8 +47,9 @@ public class CaregiverEndpoints {
         return animalService.newAnimal(animal);
     }
 
-    @DeleteMapping("an/{id}")
+    @DeleteMapping("/an/{id}")
     public void deleteAnimal(@PathVariable(value = "id") long id) {
         animalService.deleteAnimal(id);
     }
+
 }

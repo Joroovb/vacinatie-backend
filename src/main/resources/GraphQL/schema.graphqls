@@ -1,0 +1,89 @@
+type Caregiver {
+    id: ID
+    firstName: String
+    lastName: String
+    email: String
+    phoneNumber: Int
+    address: String
+    zipcode: String
+    city: String
+    #animals: [Animal]
+    # layout: [Layout]
+}
+
+type Veterinarian {
+    id: ID
+    practiceName: String
+    email: String
+    phoneNumber: Int
+    address: String
+    zipcode: String
+    city: String
+    animals: [Animal]
+    treatments: [Treatment]
+}
+
+type Treatment {
+    id: ID
+    # date: Date
+    weight: Float
+    treatmentDescription: String
+    medication: String
+    vaccine: String
+    status: TreatmentStatus
+    remark: String
+    veterinarian: Veterinarian
+    animal: Animal
+}
+
+enum TreatmentStatus {
+    PLANNED
+    DONE
+    SKIPPED
+}
+
+type Layout {
+    i: String
+    type: String
+    x: Int
+    y: Int
+    w: Int
+    h: Int
+    minW: Int
+    maxW: Int
+}
+
+type Animal {
+    id: ID
+    name: String
+    species: Species
+    race: String
+    colour: String
+    notableFeatures: String
+    # birthDate: Date
+    gender: Gender
+    # weight
+    transponder: Transponder
+    caregivers: [Caregiver!]
+    veterinarian: Veterinarian
+    treatments: [Treatment]
+}
+
+type Transponder {
+    id: ID
+    # implementationDate: Date
+    transponderLocation: String
+    transponderCode: Int
+}
+
+enum Gender {
+    MALE
+    FEMALE
+    MALE_CASTRATED
+    FEMALE_STERILISED
+}
+
+enum Species {
+    DOG
+    CAT
+}

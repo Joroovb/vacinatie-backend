@@ -1,6 +1,6 @@
 package com.joroovb.digitaalvaccinatie.model;
 
-public enum Sex {
+public enum Gender {
     MALE,
     FEMALE,
     MALE_CASTRATED,
