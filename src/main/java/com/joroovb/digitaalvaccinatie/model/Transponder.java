@@ -11,7 +11,7 @@ public class Transponder {
     private long id;
     private Date implementationDate;
     private String transponderLocation;
-    private TransponderCode transponderCode;
+    private int transponderCode;
 
     @OneToOne
     private Animal animal;
@@ -38,11 +38,11 @@ public class Transponder {
         this.transponderLocation = transponderLocation;
     }
 
-    public TransponderCode getTransponderCode() {
+    public int getTransponderCode() {
         return transponderCode;
     }
 
-    public void setTransponderCode(TransponderCode transponderCode) {
+    public void setTransponderCode(int transponderCode) {
         this.transponderCode = transponderCode;
     }
 

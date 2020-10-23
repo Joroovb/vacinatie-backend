@@ -1,3 +1,35 @@
+type Query {
+    getCaregiverData(id: ID): Caregiver
+}
+
+type Mutation {
+    newCaregiver(
+        firstName: String
+        lastName: String
+        email: String
+        phoneNumber: Int
+        address: String
+        zipcode: String
+        city: String
+    ): Caregiver
+    updateLayout(
+        data: [layoutInput]): [Layout]
+}
+
+input layoutInput {
+    i: String
+    #type: String
+    x: Int
+    y: Int
+    w: Int
+    h: Int
+    minW: Int
+    maxW: Int
+    moved: Boolean
+    static: Boolean
+    __typename: String
+}
+
 type Caregiver {
     id: ID
     firstName: String
@@ -7,8 +39,8 @@ type Caregiver {
     address: String
     zipcode: String
     city: String
-    #animals: [Animal]
-    # layout: [Layout]
+    animals: [Animal]
+    layout: [Layout]
 }
 
 type Veterinarian {
@@ -43,14 +75,18 @@ enum TreatmentStatus {
 }
 
 type Layout {
+    id:ID
     i: String
-    type: String
+    #type: String
     x: Int
     y: Int
     w: Int
     h: Int
     minW: Int
     maxW: Int
+    __typename: String
+    moved: Boolean
+    static: Boolean
 }
 
 type Animal {

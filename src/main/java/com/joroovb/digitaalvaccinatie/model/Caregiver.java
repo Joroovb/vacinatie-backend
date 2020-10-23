@@ -21,6 +21,26 @@ public class Caregiver {
     @ManyToMany
     private List<Animal> animals;
 
+    @OneToMany(mappedBy="caregiver", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Layout> layout;
+
+    // cascade={CascadeType.PERSIST, CascadeType.MERGE,
+    //            CascadeType.REFRESH}
+    public Caregiver() {
+
+    }
+
+    public Caregiver(String firstName, String lastName, String email, int phoneNumber, String address, String zipcode, String city, List<Layout> layout) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.layout = layout;
+    }
+
     // Getters & Setters
 
     public long getId() {
@@ -89,5 +109,19 @@ public class Caregiver {
 
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
+    }
+
+    public List<Layout> getLayout() {
+        return layout;
+    }
+
+    public void setLayout(Layout layout) {
+        this.layout.add(layout);
+        layout.setCaregiver(this);
+    }
+
+    public void removeLayout(Layout layout) {
+        this.layout.remove(layout);
+        //layout.setCaregiver(null);
     }
 }

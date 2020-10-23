@@ -1,4 +1,4 @@
-package com.joroovb.digitaalvaccinatie.rest;
+package com.joroovb.digitaalvaccinatie.resolver;
 
 import com.joroovb.digitaalvaccinatie.contoller.AnimalService;
 import com.joroovb.digitaalvaccinatie.contoller.CaregiverService;
@@ -6,7 +6,6 @@ import com.joroovb.digitaalvaccinatie.model.Animal;
 import com.joroovb.digitaalvaccinatie.model.Caregiver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/cg")

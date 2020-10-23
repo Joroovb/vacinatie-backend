@@ -1,7 +1,6 @@
 package com.joroovb.digitaalvaccinatie.model;
 
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,7 +21,7 @@ public class Animal {
     private String notableFeatures;
     private Date birthDate;
     @Enumerated(EnumType.STRING)
-    private Sex sex;
+    private Gender gender;
 
     private LinkedMultiValueMap<Date, Double> weight;
 
@@ -36,7 +35,7 @@ public class Animal {
     private Veterinarian veterinarian;
 
     @OneToMany
-    private List<Treatment> treatment;
+    private List<Treatment> treatments;
 
     // Getters & Setters
 
@@ -100,12 +99,12 @@ public class Animal {
         this.birthDate = birthDate;
     }
 
-    public Sex getSex() {
-        return sex;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setSex(Gender gender) {
+        this.gender = gender;
     }
 
     public LinkedMultiValueMap<Date, Double> getWeight() {
@@ -140,11 +139,11 @@ public class Animal {
         this.veterinarian = veterinarian;
     }
 
-    public List<Treatment> getTreatment() {
-        return treatment;
+    public List<Treatment> getTreatments() {
+        return treatments;
     }
 
-    public void setTreatment(List<Treatment> treatment) {
-        this.treatment = treatment;
+    public void setTreatments(List<Treatment> treatments) {
+        this.treatments = treatments;
     }
 }

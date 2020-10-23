@@ -1,4 +1,4 @@
-package com.joroovb.digitaalvaccinatie.rest;
+package com.joroovb.digitaalvaccinatie.resolver;
 
 import com.joroovb.digitaalvaccinatie.contoller.AnimalService;
 import com.joroovb.digitaalvaccinatie.contoller.TransponderService;
