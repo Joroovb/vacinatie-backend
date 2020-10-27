@@ -3,6 +3,8 @@ package com.joroovb.digitaalvaccinatie.model;
 import org.springframework.util.LinkedMultiValueMap;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class Animal {
     private Transponder transponder;
 
     @ManyToMany
-    private List<Caregiver> caregivers;
+    private List<Caregiver> caregivers = new ArrayList<Caregiver>();
 
     @ManyToOne
     private Veterinarian veterinarian;
@@ -41,11 +43,12 @@ public class Animal {
 
     };
 
-    public Animal(String name, Species species, String race, String colour, Gender gender) {
+    public Animal(String name, Species species, String race, String colour, String notableFeatures, Gender gender) {
         this.name = name;
         this.species = species;
         this.race = race;
         this.colour = colour;
+        this.notableFeatures = notableFeatures;
         this.gender = gender;
     }
 

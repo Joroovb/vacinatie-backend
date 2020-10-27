@@ -2,6 +2,7 @@ package com.joroovb.digitaalvaccinatie.contoller;
 
 import com.joroovb.digitaalvaccinatie.model.*;
 import graphql.schema.DataFetcher;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,9 @@ public class GraphQLDataFetchers {
 
     @Autowired
     LayoutRepository layoutRepository;
+
+    @Autowired
+    AnimalRepository animalRepository;
 
     public DataFetcher getCaregiverDataDataFetcher() {
         return dataFetchingEnvironment -> {
@@ -63,15 +67,23 @@ public class GraphQLDataFetchers {
         };
     }
 
-    public DataFetcher newAnimal() {
+    public DataFetcher newAnimalDataFetcher() {
         return dataFetchingEnvironment -> {
             String name = dataFetchingEnvironment.getArgument("name");
-            Species species = dataFetchingEnvironment.getArgument("species");
+            System.out.println(name);
+            Species species = Species.valueOf(dataFetchingEnvironment.getArgument("species"));
+            System.out.println(species);
             String race = dataFetchingEnvironment.getArgument("race");
+            System.out.println(race);
             String colour = dataFetchingEnvironment.getArgument("colour");
-            Gender gender = dataFetchingEnvironment.getArgument("gender");
-            Caregiver caregiver = caregiverRepository.findById(dataFetchingEnvironment.getArgument("caregivers")).get();
-            Animal animal = new Animal(name, species, race, colour, gender);
+            System.out.println(colour);
+            String notableFeatures = dataFetchingEnvironment.getArgument("notableFeatures");
+            Gender gender = Gender.valueOf(dataFetchingEnvironment.getArgument("gender"));
+            System.out.println(gender);
+            Caregiver caregiver = caregiverRepository.findById((long) 4).get();
+            Animal animal = new Animal(name, species, race, colour, notableFeatures, gender);
+            //animal.setCaregivers(caregiver);
+            animalRepository.save(animal);
             caregiver.setAnimals(animal);
             caregiverRepository.save(caregiver);
             return animal;

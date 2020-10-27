@@ -53,7 +53,8 @@ public class GraphQLProvider {
                         .dataFetcher("newCaregiver", graphQLDataFetchers.newCaregiverDataFetcher()))
                 .type(newTypeWiring("Mutation")
                         .dataFetcher("updateLayout", graphQLDataFetchers.updateLayoutDataFetcher()))
-
+                .type(newTypeWiring("Mutation")
+                        .dataFetcher("newAnimal", graphQLDataFetchers.newAnimalDataFetcher()))
                 .build();
     }
 
