@@ -1,7 +1,6 @@
 package com.joroovb.digitaalvaccinatie.contoller;
 
-import com.joroovb.digitaalvaccinatie.model.Caregiver;
-import com.joroovb.digitaalvaccinatie.model.Layout;
+import com.joroovb.digitaalvaccinatie.model.*;
 import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -61,6 +60,21 @@ public class GraphQLDataFetchers {
             Caregiver caregiver = caregiverRepository.findById((long) 4).get();
             caregiverRepository.save(caregiver);
             return caregiver.getLayout();
+        };
+    }
+
+    public DataFetcher newAnimal() {
+        return dataFetchingEnvironment -> {
+            String name = dataFetchingEnvironment.getArgument("name");
+            Species species = dataFetchingEnvironment.getArgument("species");
+            String race = dataFetchingEnvironment.getArgument("race");
+            String colour = dataFetchingEnvironment.getArgument("colour");
+            Gender gender = dataFetchingEnvironment.getArgument("gender");
+            Caregiver caregiver = caregiverRepository.findById(dataFetchingEnvironment.getArgument("caregivers")).get();
+            Animal animal = new Animal(name, species, race, colour, gender);
+            caregiver.setAnimals(animal);
+            caregiverRepository.save(caregiver);
+            return animal;
         };
     }
 }

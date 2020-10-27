@@ -37,6 +37,18 @@ public class Animal {
     @OneToMany
     private List<Treatment> treatments;
 
+    public Animal() {
+
+    };
+
+    public Animal(String name, Species species, String race, String colour, Gender gender) {
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.colour = colour;
+        this.gender = gender;
+    }
+
     // Getters & Setters
 
     public long getId() {
@@ -127,8 +139,8 @@ public class Animal {
         return caregivers;
     }
 
-    public void setCaregivers(List<Caregiver> caregivers) {
-        this.caregivers = caregivers;
+    public void setCaregivers(Caregiver caregiver) {
+        this.caregivers.add(caregiver);
     }
 
     public Veterinarian getVeterinarian() {

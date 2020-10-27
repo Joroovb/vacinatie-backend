@@ -14,6 +14,19 @@ type Mutation {
     ): Caregiver
     updateLayout(
         data: [layoutInput]): [Layout]
+    newAnimal(
+        id: ID
+        name: String
+        species: Species
+        race: String
+        colour: String
+        notableFeatures: String
+        # birthDate: Date
+        gender: Gender
+        # weight
+        caregivers: Int
+        # veterinarian: Veterinarian
+    ): Animal
 }
 
 input layoutInput {

@@ -107,8 +107,9 @@ public class Caregiver {
         return animals;
     }
 
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
+    public void setAnimals(Animal animal) {
+        this.animals.add(animal);
+        animal.setCaregivers(this);
     }
 
     public List<Layout> getLayout() {
